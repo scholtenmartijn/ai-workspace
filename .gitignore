@@ -1,0 +1,11 @@
+# Real client folders stay local. Only the fictional ACME overlay is in this repository.
+/*/
+!/ACME/
+!/examples/
+!/.claude/
+
+# Repositories and worktrees below a client folder are their own git repositories.
+/ACME/*/
+/ACME/.worktrees/
+
+.claude/settings.local.json
