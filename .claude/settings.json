@@ -9,6 +9,7 @@
       "Bash(git branch -D *)",
       "Bash(terraform apply*)",
       "Bash(terraform destroy*)",
+      "Bash(aws ec2 terminate-instances*)",
       "Bash(kubectl apply *)",
       "Bash(kubectl delete *)",
       "Bash(kubectl patch *)",

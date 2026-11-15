@@ -130,5 +130,7 @@ Skills hold the procedures, so that `AGENTS.md` stays short. The ones that matte
 - **opencode.** I checked the opencode behavior against its documentation, not in a live run. opencode
   uses the first `AGENTS.md` that it finds when it goes up from the working directory. In a repository
   that has its own `AGENTS.md`, start opencode in the workspace folder to get the workspace rules.
+- **Start each task with a fresh session.** A long context makes it more likely that the agent misses a
+  written rule.
 - **Keep the files short.** The rules file is below 200 lines. It holds only what the agent cannot find
   in the repositories.
