@@ -1,7 +1,7 @@
 # ai-workspace
 
 A small template for agentic work across repositories. One folder holds the rules, one overlay holds the
-data of each client, and the workflow is the same on each machine.
+data of each project, and the workflow is the same on each machine.
 
 This is the companion of the blog post on [mrcontainer.nl](https://mrcontainer.nl). It is a trimmed
 version of the setup that I use each day. My full setup (skills, hooks, installer) is in a private
@@ -17,8 +17,8 @@ config:
 ---
 flowchart TB
   W["~/projects/AGENTS.md<br/>generic rules<br/>the same on each machine"]
-  W --> A["ACME/AGENTS.md<br/>client overlay:<br/>team, registry, handoff mode"]
-  W --> B["other-client/AGENTS.md<br/>client overlay"]
+  W --> A["ACME/AGENTS.md<br/>project overlay:<br/>team, registry, handoff mode"]
+  W --> B["other-project/AGENTS.md<br/>project overlay"]
   A --> R1["ACME/acme-api<br/>Go, own AGENTS.md"]
   A --> R2["ACME/acme-reports<br/>Python, own AGENTS.md"]
   A --> WT["ACME/.worktrees/<br/>one worktree for each task"]
@@ -27,7 +27,7 @@ flowchart TB
 | File                                | Purpose                                                         |
 | ----------------------------------- | --------------------------------------------------------------- |
 | [`AGENTS.md`](AGENTS.md)            | Generic rules: git, infrastructure, worktrees, verify, handoff. |
-| [`ACME/AGENTS.md`](ACME/AGENTS.md)  | Example client overlay. ACME is fictional.                      |
+| [`ACME/AGENTS.md`](ACME/AGENTS.md)  | Example project overlay. ACME is fictional.                      |
 | [`.claude/settings.json`](.claude/settings.json) | Deny rules that the harness enforces.              |
 | [`examples/cross-repo-task.md`](examples/cross-repo-task.md) | One task through the full workflow.    |
 
@@ -47,8 +47,8 @@ flowchart LR
   V --> H["Handoff:<br/>pr or review"]
 ```
 
-1. Start the agent in the workspace folder and give it a task that names the client.
-2. The agent reads `AGENTS.md` and the client overlay.
+1. Start the agent in the workspace folder and give it a task that names the project.
+2. The agent reads `AGENTS.md` and the project overlay.
 3. The agent makes one worktree for each repository, and gives each repository to one worker.
 4. Each worker writes a test first, makes the change, and runs the repository tests.
 5. The agent runs the integration test that uses the repositories together.
@@ -58,7 +58,7 @@ flowchart LR
 
 ## The handoff
 
-One line sets how a task ends: `Handoff mode: pr` or `Handoff mode: review`. The client overlay has
+One line sets how a task ends: `Handoff mode: pr` or `Handoff mode: review`. The project overlay has
 precedence over the workspace file, so a careful client and a personal project can use different modes
 on the same machine.
 
@@ -85,11 +85,11 @@ mkdir -p ~/projects && cd ~/projects
 git clone https://github.com/scholtenmartijn/ai-workspace.git /tmp/ai-workspace
 cp /tmp/ai-workspace/AGENTS.md .
 mkdir -p .claude && cp /tmp/ai-workspace/.claude/settings.json .claude/
-mkdir <client> && cp /tmp/ai-workspace/ACME/AGENTS.md <client>/AGENTS.md
+mkdir <project> && cp /tmp/ai-workspace/ACME/AGENTS.md <project>/AGENTS.md
 ```
 
-Then edit `<client>/AGENTS.md`: the organization, the team, the handoff mode, and the registry. Clone the
-client repositories into `<client>/`. Keep real client overlays local.
+Then edit `<project>/AGENTS.md`: the organization, the team, the handoff mode, and the registry. Clone the
+project repositories into `<project>/`. Keep real project overlays local.
 
 ## Tools
 

@@ -1,16 +1,16 @@
 # AGENTS.md: ACME overlay
 
-Client overlay for `~/projects/ACME/`. It adds to `~/projects/AGENTS.md`. It cannot remove a rule from
+Project overlay for `~/projects/ACME/`. It adds to `~/projects/AGENTS.md`. It cannot remove a rule from
 that file. If two rules are different, obey the stricter rule.
 
-ACME is a fictional client. Copy this file for a real client and keep the copy local. Do not commit
+ACME is a fictional client. Copy this file for a real project and keep the copy local. Do not commit
 real client data to a public repository.
 
-## 1. Client
+## 1. Project
 
 | Item                | Value                                 |
 | ------------------- | ------------------------------------- |
-| Client              | ACME                                  |
+| Project             | ACME                                  |
 | GitHub organization | `acme`                                |
 | Team                | Platform                              |
 | Primary project     | `acme/acme-api`                       |
@@ -35,7 +35,7 @@ Integration test for the two repositories together: `make integration` in `ACME/
 
 `TBD` in a row means: find the value during the first work in that repository, then update the row.
 
-## 3. Client rules
+## 3. Project rules
 
 - The Platform team owns the two repositories in the registry. For other ACME repositories, do not run
   install hooks.

@@ -30,11 +30,11 @@ sequenceDiagram
 
 ## 1. The prompt
 
-Start the agent in `~/projects` and give it the task. Name the client, the repositories, and what
+Start the agent in `~/projects` and give it the task. Name the project, the repositories, and what
 "done" means.
 
 ```text
-Client: ACME. Use handoff mode pr for this task.
+Project: ACME. Use handoff mode pr for this task.
 
 Invoices need a currency. Add a field `currency` (ISO 4217 code, string, default "EUR") to the invoice
 response of acme-api. Make acme-reports group the monthly totals by currency.

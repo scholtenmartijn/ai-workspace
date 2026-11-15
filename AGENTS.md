@@ -1,26 +1,26 @@
 # AGENTS.md
 
 Instructions for AI agents in this workspace. This file is generic. It is the same on each machine and
-for each client. Client data is in the client overlay `<client>/AGENTS.md`.
+for each project. Project data is in the project overlay `<project>/AGENTS.md`.
 
 Handoff mode: pr
 
 ## 1. Scope
 
-This folder is an umbrella workspace. It holds one folder for each client, and each client folder holds
-the repositories of that client.
+This folder is an umbrella workspace. It holds one folder for each project, and each project folder
+holds the repositories of that project. A project can be a client or a personal project.
 
-| Path                                   | Content                                           |
-| -------------------------------------- | ------------------------------------------------- |
-| `<client>/AGENTS.md`                   | Client overlay: team, registry, handoff mode.     |
-| `<client>/<repo>/`                     | One GitHub repository in each folder.             |
-| `<client>/.worktrees/<repo>/<branch>/` | Git worktrees for agent tasks.                    |
+| Path                                    | Content                                           |
+| --------------------------------------- | ------------------------------------------------- |
+| `<project>/AGENTS.md`                   | Project overlay: team, registry, handoff mode.    |
+| `<project>/<repo>/`                     | One GitHub repository in each folder.             |
+| `<project>/.worktrees/<repo>/<branch>/` | Git worktrees for agent tasks.                    |
 
 There are two work modes:
 
-- Repository mode. The session starts in `<client>/<repo>/`. Work in that repository only.
+- Repository mode. The session starts in `<project>/<repo>/`. Work in that repository only.
 - Workspace mode. The session starts in this folder. Do cross-repository work. Before you start, read
-  `<client>/AGENTS.md` for the client that the task is about.
+  `<project>/AGENTS.md` for the project that the task is about.
 
 ## 2. Hard rules
 
@@ -47,12 +47,12 @@ There are two work modes:
 ### Precedence
 
 - A repository can have its own `AGENTS.md`. Read it before you work in that repository.
-- The client overlay can add rules. It cannot remove a rule from this file.
+- The project overlay can add rules. It cannot remove a rule from this file.
 - If two rules are different, obey the stricter rule.
 
 ## 3. Before work in a repository
 
-1. Read the client overlay `<client>/AGENTS.md`.
+1. Read the project overlay `<project>/AGENTS.md`.
 2. Read the repository `AGENTS.md`, if it exists.
 3. Read `README.md`, the `Makefile`, and `.github/workflows/`.
 4. Find the test commands in the registry of the overlay. If the value is `TBD`, find it and update
@@ -65,13 +65,13 @@ Use one worktree for each task. The main checkout stays clean, and tasks can run
 worktrunk (`wt`):
 
 ```bash
-cd ~/projects/<client>/<repo>
+cd ~/projects/<project>/<repo>
 git fetch origin
 wt switch --create <branch>
 wt list
 ```
 
-- The path is `~/projects/<client>/.worktrees/<repo>/<branch>`.
+- The path is `~/projects/<project>/.worktrees/<repo>/<branch>`.
 - Use absolute paths for all reads and edits. Use `git -C <path>` for git commands.
 - Do not remove a worktree. The user removes it after the merge.
 
@@ -82,7 +82,7 @@ details of one repository do not fill the context of the other. Give each worker
 
 - The repository path and the worktree path.
 - The task, and the contract that the repositories share (for example the API field and its type).
-- "Read `<client>/AGENTS.md` and the repository agent file first."
+- "Read `<project>/AGENTS.md` and the repository agent file first."
 - "Work only in this path. Use absolute paths."
 - "Write the test first. Show that it fails, then make it pass."
 
@@ -106,7 +106,7 @@ The work is not ready until a command proves it.
 ## 7. Handoff
 
 Each task ends with a pull request that the user can show. The handoff mode tells you how the task gets
-there. Use the first line `Handoff mode: <mode>` that you find: the client overlay first, then this
+there. Use the first line `Handoff mode: <mode>` that you find: the project overlay first, then this
 file. If there is no line, use `review`. An instruction from the user in the session has precedence, for
 that task only.
 
